@@ -1,5 +1,7 @@
 <?php
 
+use Statamic\View\Antlers\Language\Utilities\StringUtilities;
+
 test('link tags can be rendered', function () {
     $expected = '<link rel="stylesheet" href="https://example.com/css/main.css">';
 
@@ -31,5 +33,5 @@ test('link tags can pull rom the context', function () {
 <link rel="stylesheet" href="https://example.com/css/main.min.css">
 EXP;
 
-    expect(renderLinkTags($config, $context))->toBe($expected);
+    expect(StringUtilities::normalizeLineEndings(renderLinkTags($config, $context)))->toBe(StringUtilities::normalizeLineEndings($expected));
 });
